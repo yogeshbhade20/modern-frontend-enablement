@@ -3,7 +3,7 @@
 ![Design preview for the Link-sharing app coding challenge](./preview.jpg)
 
 ## Figma Download Link
-- [payapi-multi-page-website-figma.zip](https://drive.google.com/file/d/1WB_UtnKuiEMKvcCCCbgZCa0gVHI2a-7w/view?usp=drive_link)
+- [link-sharing-app.zip](https://drive.google.com/file/d/1WB_UtnKuiEMKvcCCCbgZCa0gVHI2a-7w/view?usp=drive_link)
 
 ## Welcome! 👋
 
