@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State" id="searchInput">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+  <script>
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    const searchInput = document.getElementById("searchInput");
+    const suggestionBox = document.querySelector(".suggestions");
+    let allCityState = [];
+
+    searchInput.addEventListener("keyup", filterCityState);
+
+    getCityStateList();
+
+    async function getCityStateList() {
+      let response = await fetch(endpoint);
+
+      if (response.ok) { // if HTTP-status is 200-299
+        // get the response body (the method explained below)
+        allCityState = await response.json();
+        console.log(allCityState[0]);
+      } else {
+        alert("HTTP-Error: " + response.status);
+      }
+    }
+
+    function filterCityState() {
+      const searchText = searchInput.value.toLowerCase().trim();
+      suggestionBox.innerHTML = "";
+
+      if (searchText.length > 0) {
+        for (let item of allCityState) {
+          if (item.city.toLowerCase().indexOf(searchText) != -1 || item.state.toLowerCase().indexOf(searchText) != -1) {
+            let li = document.createElement("li");
+            li.innerText = item.city + ", " + item.state;
+            suggestionBox.appendChild(li);
+          }
+        }
+      }
+    }        
+  </script>
+</body>
+
+</html>
